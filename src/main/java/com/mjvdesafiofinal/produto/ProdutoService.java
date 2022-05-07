@@ -22,13 +22,18 @@ public class ProdutoService {
         return repository.save(entity);
     }
 
+    public ProdutoEntity buscaProdutoPorId(Long id) throws Exception {
+        return repository.findById(id).orElseThrow(() -> new Exception("Produto não encontrado"));
+    }
+
 
     public ProdutoEntity toEntity(ProdutoRequest request) {
         return new ProdutoEntity(
                 request.getNome(),
                 request.getDescricao(),
                 request.getTipoMidia(),
-                request.getPlataforma()
+                request.getPlataforma(),
+                request.getValor()
         );
     }
 

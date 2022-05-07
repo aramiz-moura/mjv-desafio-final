@@ -6,7 +6,7 @@ import lombok.Data;
 
 
 import javax.persistence.*;
-import java.util.ArrayList;
+
 import java.util.List;
 
 @Entity
@@ -18,17 +18,20 @@ public class CarrinhoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
-    private UsuarioEntity usuario;
+//    @OneToOne
+//    @JoinColumn(name = "usuario_id")
+//    private UsuarioEntity usuario;
 
 
-    @OneToMany
-    private List<ItemCarrinho> itens = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="item_carrinho_id")
+//    @ElementCollection(targetClass =  )
+    private List<ItemCarrinho> itens;
 
-    public CarrinhoEntity(UsuarioEntity usuario, List<ItemCarrinho> itens) {
-        this.usuario = usuario;
+    public CarrinhoEntity( List<ItemCarrinho> itens) {
         this.itens = itens;
     }
+
 
     public CarrinhoEntity() {
 

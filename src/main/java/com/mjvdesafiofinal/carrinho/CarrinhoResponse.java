@@ -24,7 +24,7 @@ public class CarrinhoResponse {
 
     public CarrinhoResponse (CarrinhoEntity entity) {
         this.id = entity.getId();
-        this.usuario = new UsuarioResponse(entity.getUsuario());
+//        this.usuario = new UsuarioResponse(entity.getUsuario());
         this.itens = entity.getItens().stream().map(ItemCarrinhoResponse::new).collect(Collectors.toList());
     }
 }

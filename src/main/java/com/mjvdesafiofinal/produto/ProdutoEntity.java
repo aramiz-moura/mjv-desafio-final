@@ -5,6 +5,7 @@ import lombok.Data;
 
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 
 @Data
@@ -19,13 +20,15 @@ public class ProdutoEntity {
     private String descricao;
     private TipoMidia tipoMidia;
     private String plataforma;
+    private BigDecimal valor;
 
 
-    public ProdutoEntity(String nome, String descricao, TipoMidia tipoMidia, String plataforma) {
+    public ProdutoEntity(String nome, String descricao, TipoMidia tipoMidia, String plataforma, BigDecimal valor) {
         this.nome = nome;
         this.descricao = descricao;
         this.tipoMidia = tipoMidia;
         this.plataforma = plataforma;
+        this.valor = valor;
     }
 
     public ProdutoEntity() {
