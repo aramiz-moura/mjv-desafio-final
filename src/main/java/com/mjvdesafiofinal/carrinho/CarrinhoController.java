@@ -24,11 +24,11 @@ public class CarrinhoController {
 
     @GetMapping("/{idCarrinho}")
     public List<ItemCarrinhoResponse> itensNoCarrinho(@PathVariable Long idCarrinho) throws Exception {
-//        CarrinhoEntity entity = carrinhoService.buscaCarrinhoPorId(idCarrinho);
+
         List<ItemCarrinho> entityItemCarrinho = itemCarrinhoRepository.findAllByCarrinho_Id(idCarrinho);
 
         return entityItemCarrinho.stream().map(ItemCarrinhoResponse::new).collect(Collectors.toList());
-//        System.out.println(entity);
+
     }
 
 }

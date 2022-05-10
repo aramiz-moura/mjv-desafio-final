@@ -3,11 +3,7 @@ package com.mjvdesafiofinal.produto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -22,4 +18,9 @@ public class ProdutoController {
         ProdutoResponse entity = new ProdutoResponse(produtoService.criaNovoProduto(produtoRequest));
         return new ResponseEntity<>(entity,HttpStatus.CREATED);
     }
+
+//    @GetMapping("/{idProduto}")
+//    public ResponseEntity<ProdutoResponse> getProduto(@PathVariable Long idProduto) {
+//
+//    }
 }

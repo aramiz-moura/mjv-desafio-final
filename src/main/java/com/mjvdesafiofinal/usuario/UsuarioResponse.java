@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
 
 @Data
@@ -20,16 +21,21 @@ public class UsuarioResponse {
     private Long id;
     private String nome;
     private String nomeUsuario;
-    private ZonedDateTime dataCriacao;
-    private ZonedDateTime dataAtualizacao;
+    private String dataCriacao;
+    private String dataAtualizacao;
 
     public UsuarioResponse(UsuarioEntity usuarioEntity) {
         this.id = usuarioEntity.getId();
         this.nome = usuarioEntity.getNome();
         this.nomeUsuario = usuarioEntity.getNomeUsuario();
-        this.dataCriacao = usuarioEntity.getDataCriacao();
-        this.dataAtualizacao = usuarioEntity.getDataAtualizacao();
+        this.dataCriacao = formataDataHora(usuarioEntity.getDataCriacao());
+        this.dataAtualizacao = formataDataHora(usuarioEntity.getDataAtualizacao());
     }
 
+    public String formataDataHora(ZonedDateTime dataHora) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss a");
+        String dataFormatada = dataHora.format(formatter);
+        return dataFormatada;
+    }
 
 }
