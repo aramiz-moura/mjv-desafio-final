@@ -18,14 +18,10 @@ public class CarrinhoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @OneToOne
-//    @JoinColumn(name = "usuario_id")
-//    private UsuarioEntity usuario;
 
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="item_carrinho_id")
-//    @ElementCollection(targetClass =  )
     private List<ItemCarrinho> itens;
 
     public CarrinhoEntity( List<ItemCarrinho> itens) {

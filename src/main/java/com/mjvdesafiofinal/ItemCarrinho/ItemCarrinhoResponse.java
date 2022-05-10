@@ -16,10 +16,7 @@ import lombok.NoArgsConstructor;
 public class ItemCarrinhoResponse {
 
     private Long id;
-
     private ProdutoResponse produto;
-
-
     private Integer quantidade;
 
     public ItemCarrinhoResponse(ItemCarrinho item) {

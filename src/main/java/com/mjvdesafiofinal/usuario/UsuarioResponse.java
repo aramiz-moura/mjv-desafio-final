@@ -3,6 +3,7 @@ package com.mjvdesafiofinal.usuario;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.mjvdesafiofinal.carrinho.CarrinhoResponse;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,6 +24,7 @@ public class UsuarioResponse {
     private String nomeUsuario;
     private String dataCriacao;
     private String dataAtualizacao;
+    private CarrinhoResponse carrinho;
 
     public UsuarioResponse(UsuarioEntity usuarioEntity) {
         this.id = usuarioEntity.getId();
@@ -30,6 +32,7 @@ public class UsuarioResponse {
         this.nomeUsuario = usuarioEntity.getNomeUsuario();
         this.dataCriacao = formataDataHora(usuarioEntity.getDataCriacao());
         this.dataAtualizacao = formataDataHora(usuarioEntity.getDataAtualizacao());
+        this.carrinho = new CarrinhoResponse(usuarioEntity.getCarrinho());
     }
 
     public String formataDataHora(ZonedDateTime dataHora) {
