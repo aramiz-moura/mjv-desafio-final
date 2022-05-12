@@ -1,13 +1,11 @@
 package com.mjvdesafiofinal.carrinho;
 
-import com.mjvdesafiofinal.ItemCarrinho.ItemCarrinho;
-import com.mjvdesafiofinal.ItemCarrinho.ItemCarrinhoRepository;
-import com.mjvdesafiofinal.ItemCarrinho.ItemCarrinhoResponse;
+import com.mjvdesafiofinal.ItemCarrinho.*;
+import com.mjvdesafiofinal.exception.ApiRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,12 +20,37 @@ public class CarrinhoController {
     @Autowired
     ItemCarrinhoRepository itemCarrinhoRepository;
 
+    @Autowired
+    ItemService itemService;
+
     @GetMapping("/{idCarrinho}")
-    public List<ItemCarrinhoResponse> itensNoCarrinho(@PathVariable Long idCarrinho) throws Exception {
+    public List<ItemCarrinhoResponse> itensNoCarrinho(@PathVariable Long idCarrinho) throws ApiRequestException {
 
-        List<ItemCarrinho> entityItemCarrinho = itemCarrinhoRepository.findAllByCarrinho_Id(idCarrinho);
+        CarrinhoEntity entity = carrinhoService.buscaCarrinhoPorId(idCarrinho);
+        List<ItemCarrinhoEntity> entityItemCarrinhoEntity = entity.getItens();
 
-        return entityItemCarrinho.stream().map(ItemCarrinhoResponse::new).collect(Collectors.toList());
+        return entityItemCarrinhoEntity.stream().map(ItemCarrinhoResponse::new).collect(Collectors.toList());
+
+    }
+
+    @PostMapping("/{carrinhoId}")
+    public ResponseEntity<ItemCarrinhoResponse> adicionaNovoItemCarrinho(
+            @PathVariable Long carrinhoId,
+            @RequestBody ItemRequest item) throws ApiRequestException {
+
+        CarrinhoEntity carrinhoEntity = carrinhoService.buscaCarrinhoPorId(carrinhoId);
+        List<ItemCarrinhoEntity> listaPedido = carrinhoEntity.getItens();
+
+        ItemCarrinhoEntity entity = itemService.toEntity(item);
+        entity.setCarrinho(carrinhoEntity);
+        itemService.salvaEntidadeRepository(entity);
+
+        listaPedido.add(entity);
+        carrinhoService.salvaEntityRepository(carrinhoEntity);
+
+        ItemCarrinhoResponse itemCarrinhoResponse = new ItemCarrinhoResponse(entity);
+
+        return new ResponseEntity<>(itemCarrinhoResponse, HttpStatus.ACCEPTED);
 
     }
 

@@ -10,7 +10,8 @@ import javax.persistence.*;
 
 @Data
 @Entity
-public class ItemCarrinho {
+@Table(name = "ITEM_CARRINHO")
+public class ItemCarrinhoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,13 +27,13 @@ public class ItemCarrinho {
 
     private Integer quantidade;
 
-    public ItemCarrinho(ProdutoEntity produto,Integer quantidade, CarrinhoEntity carrinho) {
+    public ItemCarrinhoEntity(ProdutoEntity produto, Integer quantidade, CarrinhoEntity carrinho) {
         this.produto = produto;
        this.carrinho = carrinho;
         this.quantidade = quantidade;
     }
 
-    public ItemCarrinho() {
+    public ItemCarrinhoEntity() {
 
     }
 }

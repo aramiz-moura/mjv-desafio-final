@@ -3,7 +3,7 @@ package com.mjvdesafiofinal.ItemCarrinho;
 
 import com.mjvdesafiofinal.carrinho.CarrinhoEntity;
 import com.mjvdesafiofinal.carrinho.CarrinhoService;
-import com.mjvdesafiofinal.usuario.UsuarioEntity;
+import com.mjvdesafiofinal.exception.ApiRequestException;
 import com.mjvdesafiofinal.usuario.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,24 +23,5 @@ public class ItemController {
     @Autowired
     ItemService itemService;
 
-    @PostMapping("/{carrinhoId}")
-    public ResponseEntity<ItemCarrinhoResponse> adicionaNovoItemCarrinho(
-            @PathVariable Long carrinhoId,
-            @RequestBody ItemRequest item) throws Exception {
 
-       CarrinhoEntity carrinhoEntity = carrinhoService.buscaCarrinhoPorId(carrinhoId);
-        List<ItemCarrinho> listaPedido = carrinhoEntity.getItens();
-
-        ItemCarrinho entity = itemService.toEntity(item);
-        entity.setCarrinho(carrinhoService.buscaCarrinhoPorId(carrinhoId));
-        itemService.salvaEntidadeRepository(entity);
-
-       listaPedido.add(entity);
-       carrinhoService.salvaEntityRepository(carrinhoEntity);
-
-        ItemCarrinhoResponse itemCarrinhoResponse = new ItemCarrinhoResponse(entity);
-
-        return new ResponseEntity<>(itemCarrinhoResponse, HttpStatus.ACCEPTED);
-
-    }
 }

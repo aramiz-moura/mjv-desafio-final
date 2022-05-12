@@ -1,9 +1,6 @@
 package com.mjvdesafiofinal.ItemCarrinho;
 
 
-import com.mjvdesafiofinal.carrinho.CarrinhoEntity;
-import com.mjvdesafiofinal.carrinho.CarrinhoResponse;
-import com.mjvdesafiofinal.produto.ProdutoEntity;
 import com.mjvdesafiofinal.produto.ProdutoResponse;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,7 +16,7 @@ public class ItemCarrinhoResponse {
     private ProdutoResponse produto;
     private Integer quantidade;
 
-    public ItemCarrinhoResponse(ItemCarrinho item) {
+    public ItemCarrinhoResponse(ItemCarrinhoEntity item) {
         this.id = item.getId();
         this.produto = new ProdutoResponse(item.getProduto());
         this.quantidade = item.getQuantidade();

@@ -6,9 +6,10 @@ import lombok.Data;
 import javax.persistence.*;
 import java.time.ZonedDateTime;
 
+
 @Entity
 @Data
-@Table(name = "USUARIOS")
+@Table(name = "USUARIO")
 public class UsuarioEntity {
 
     @Id
@@ -17,6 +18,8 @@ public class UsuarioEntity {
     private String nome;
     private String nomeUsuario;
     private String email;
+
+    @Column(unique = true, length = 11)
     private String cpf;
 
     @OneToOne(cascade = CascadeType.ALL)

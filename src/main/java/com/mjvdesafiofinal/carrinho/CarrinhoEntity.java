@@ -1,7 +1,6 @@
 package com.mjvdesafiofinal.carrinho;
 
-import com.mjvdesafiofinal.ItemCarrinho.ItemCarrinho;
-import com.mjvdesafiofinal.usuario.UsuarioEntity;
+import com.mjvdesafiofinal.ItemCarrinho.ItemCarrinhoEntity;
 import lombok.Data;
 
 
@@ -11,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name = "CARRINHOS")
+@Table(name = "CARRINHO")
 public class CarrinhoEntity {
 
     @Id
@@ -19,12 +18,11 @@ public class CarrinhoEntity {
     private Long id;
 
 
-
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="item_carrinho_id")
-    private List<ItemCarrinho> itens;
+    private List<ItemCarrinhoEntity> itens;
 
-    public CarrinhoEntity( List<ItemCarrinho> itens) {
+    public CarrinhoEntity( List<ItemCarrinhoEntity> itens) {
         this.itens = itens;
     }
 

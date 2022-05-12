@@ -2,9 +2,9 @@ package com.mjvdesafiofinal.ItemCarrinho;
 
 
 
-import com.mjvdesafiofinal.carrinho.CarrinhoEntity;
 import com.mjvdesafiofinal.carrinho.CarrinhoRepository;
 import com.mjvdesafiofinal.carrinho.CarrinhoService;
+import com.mjvdesafiofinal.exception.ApiRequestException;
 import com.mjvdesafiofinal.produto.ProdutoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,21 +27,21 @@ public class ItemService {
     @Autowired
     CarrinhoService carrinhoService;
 
-    public ItemCarrinho toEntity(ItemRequest itemRequest) throws Exception {
-        ItemCarrinho itemCarrinho = new ItemCarrinho();
-        itemCarrinho.setProduto(produtoService.buscaProdutoPorId(itemRequest.getProdutoId()));
-        itemCarrinho.setQuantidade(itemRequest.getQuantidade());
-        return itemCarrinho;
+    public ItemCarrinhoEntity toEntity(ItemRequest itemRequest) throws ApiRequestException {
+        ItemCarrinhoEntity itemCarrinhoEntity = new ItemCarrinhoEntity();
+        itemCarrinhoEntity.setProduto(produtoService.buscaProdutoPorId(itemRequest.getProdutoId()));
+        itemCarrinhoEntity.setQuantidade(itemRequest.getQuantidade());
+        return itemCarrinhoEntity;
     }
 
-    public ItemCarrinho salvaItemCarrinho(ItemRequest item) throws Exception {
-        ItemCarrinho itemCarrinho = toEntity(item);
-        return itemCarrinhoRepository.save(itemCarrinho);
+    public ItemCarrinhoEntity salvaItemCarrinho(ItemRequest item) throws ApiRequestException {
+        ItemCarrinhoEntity itemCarrinhoEntity = toEntity(item);
+        return itemCarrinhoRepository.save(itemCarrinhoEntity);
     }
 
 
-    public ItemCarrinho salvaEntidadeRepository(ItemCarrinho itemCarrinho) {
-        return itemCarrinhoRepository.save(itemCarrinho);
+    public ItemCarrinhoEntity salvaEntidadeRepository(ItemCarrinhoEntity itemCarrinhoEntity) {
+        return itemCarrinhoRepository.save(itemCarrinhoEntity);
     }
 
 
