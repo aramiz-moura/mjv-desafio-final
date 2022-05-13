@@ -7,25 +7,30 @@ import com.mjvdesafiofinal.carrinho.CarrinhoService;
 import com.mjvdesafiofinal.exception.ApiRequestException;
 import com.mjvdesafiofinal.produto.ProdutoService;
 
+
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@Data
 public class ItemService {
-
-
 
     @Autowired
     ItemCarrinhoRepository itemCarrinhoRepository;
     @Autowired
     CarrinhoRepository carrinhoRepository;
-
-
     @Autowired
     ProdutoService produtoService;
-
     @Autowired
     CarrinhoService carrinhoService;
+
+    public ItemService(ItemCarrinhoRepository itemCarrinhoRepository, CarrinhoRepository carrinhoRepository, ProdutoService produtoService, CarrinhoService carrinhoService) {
+        this.itemCarrinhoRepository = itemCarrinhoRepository;
+        this.carrinhoRepository = carrinhoRepository;
+        this.produtoService = produtoService;
+        this.carrinhoService = carrinhoService;
+    }
 
     public ItemCarrinhoEntity toEntity(ItemRequest itemRequest) throws ApiRequestException {
         ItemCarrinhoEntity itemCarrinhoEntity = new ItemCarrinhoEntity();

@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 
 @Data
 @AllArgsConstructor
@@ -14,11 +16,11 @@ public class ItemCarrinhoResponse {
 
     private Long id;
     private ProdutoResponse produto;
-    private Integer quantidade;
+    private BigDecimal quantidade;
 
     public ItemCarrinhoResponse(ItemCarrinhoEntity item) {
         this.id = item.getId();
         this.produto = new ProdutoResponse(item.getProduto());
-        this.quantidade = item.getQuantidade();
+        this.quantidade = BigDecimal.valueOf(item.getQuantidade());
     }
 }

@@ -6,6 +6,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
@@ -21,6 +22,9 @@ public class CarrinhoEntity {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="item_carrinho_id")
     private List<ItemCarrinhoEntity> itens;
+
+
+    private BigDecimal valorTotal;
 
     public CarrinhoEntity( List<ItemCarrinhoEntity> itens) {
         this.itens = itens;

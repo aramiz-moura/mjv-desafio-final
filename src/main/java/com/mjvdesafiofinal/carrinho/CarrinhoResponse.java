@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,8 +21,10 @@ import java.util.stream.Collectors;
 public class CarrinhoResponse {
 
 
+
     private Long id;
     private List<ItemCarrinhoResponse> itens;
+    private BigDecimal valorTotal;
 
     public CarrinhoResponse (CarrinhoEntity entity) {
         this.id = entity.getId();
@@ -28,7 +32,12 @@ public class CarrinhoResponse {
             List<ItemCarrinhoEntity> lista = new ArrayList<>();
             entity.setItens(lista);
         } else {
-            this.itens = entity.getItens().stream().map(ItemCarrinhoResponse::new).collect(Collectors.toList());
+            List<ItemCarrinhoResponse> itemCarrinhoResponses = entity.getItens().stream().map(ItemCarrinhoResponse::new).collect(Collectors.toList());
+            this.itens = itemCarrinhoResponses;
+            BigDecimal sumofItens = itemCarrinhoResponses.stream().map(item -> item.getQuantidade().multiply(item.getProduto().getValor()))
+                    .reduce(BigDecimal.ZERO,BigDecimal::add);
+            this.valorTotal = sumofItens;
         }
     }
+
 }

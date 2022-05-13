@@ -2,7 +2,6 @@ package com.mjvdesafiofinal.carrinho;
 
 import com.mjvdesafiofinal.ItemCarrinho.*;
 import com.mjvdesafiofinal.exception.ApiRequestException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,22 +13,25 @@ import java.util.stream.Collectors;
 @RequestMapping("/v1/carrinho")
 public class CarrinhoController {
 
-    @Autowired
     CarrinhoService carrinhoService;
 
-    @Autowired
     ItemCarrinhoRepository itemCarrinhoRepository;
 
-    @Autowired
     ItemService itemService;
 
+    public CarrinhoController(CarrinhoService carrinhoService, ItemCarrinhoRepository itemCarrinhoRepository, ItemService itemService) {
+        this.carrinhoService = carrinhoService;
+        this.itemCarrinhoRepository = itemCarrinhoRepository;
+        this.itemService = itemService;
+    }
+
     @GetMapping("/{idCarrinho}")
-    public List<ItemCarrinhoResponse> itensNoCarrinho(@PathVariable Long idCarrinho) throws ApiRequestException {
+    public ResponseEntity<CarrinhoResponse> itensNoCarrinho(@PathVariable Long idCarrinho) throws ApiRequestException {
 
         CarrinhoEntity entity = carrinhoService.buscaCarrinhoPorId(idCarrinho);
-        List<ItemCarrinhoEntity> entityItemCarrinhoEntity = entity.getItens();
+        CarrinhoResponse carrinhoResponse = new CarrinhoResponse(entity);
 
-        return entityItemCarrinhoEntity.stream().map(ItemCarrinhoResponse::new).collect(Collectors.toList());
+        return ResponseEntity.ok(carrinhoResponse);
 
     }
 
@@ -46,7 +48,9 @@ public class CarrinhoController {
         itemService.salvaEntidadeRepository(entity);
 
         listaPedido.add(entity);
+        carrinhoEntity.setValorTotal(carrinhoService.somaValorItens(listaPedido));
         carrinhoService.salvaEntityRepository(carrinhoEntity);
+
 
         ItemCarrinhoResponse itemCarrinhoResponse = new ItemCarrinhoResponse(entity);
 

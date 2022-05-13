@@ -1,23 +1,21 @@
 package com.mjvdesafiofinal.produto;
 
 import com.mjvdesafiofinal.exception.ApiRequestException;
+import com.mjvdesafiofinal.specification.ProdutoSpecifications;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import static org.springframework.data.jpa.domain.Specification.where;
 
 import java.util.List;
 
 @Service
 @Data
-@RequiredArgsConstructor
 @AllArgsConstructor
 public class ProdutoService {
 
-    @Autowired
+
     private ProdutoRepository repository;
 
     public ProdutoEntity criaNovoProduto(ProdutoRequest produtoRequest){
@@ -29,8 +27,16 @@ public class ProdutoService {
         return repository.findById(id).orElseThrow(() -> new ApiRequestException("Ooops! Produto não encontrado!"));
     }
 
-    public List<ProdutoEntity> getAll() {
-        return repository.findAll();
+    public List<ProdutoEntity> buscarTodos(ProdutoRequest request) {
+
+        return repository.findAll(
+                where(ProdutoSpecifications.nomeContem(request.getNome()))
+                        .and(ProdutoSpecifications.valorMenorOuIgual(request.getValor()))
+        );
+    }
+
+    public void deletaProdutoPorId(Long id) {
+        repository.deleteById(id);
     }
 
 
