@@ -1,7 +1,7 @@
 package com.mjvdesafiofinal;
 
 
-import com.mjvdesafiofinal.produto.ProdutoService;
+
 import com.mjvdesafiofinal.usuario.UsuarioEntity;
 import com.mjvdesafiofinal.usuario.UsuarioRepository;
 import com.mjvdesafiofinal.usuario.UsuarioRequest;
