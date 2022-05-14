@@ -2,10 +2,10 @@ package com.mjvdesafiofinal;
 
 
 
-import com.mjvdesafiofinal.usuario.UsuarioEntity;
-import com.mjvdesafiofinal.usuario.UsuarioRepository;
-import com.mjvdesafiofinal.usuario.UsuarioRequest;
-import com.mjvdesafiofinal.usuario.UsuarioService;
+import com.mjvdesafiofinal.ecommerce.model.usuario.UsuarioEntity;
+import com.mjvdesafiofinal.ecommerce.repository.UsuarioRepository;
+import com.mjvdesafiofinal.ecommerce.model.usuario.UsuarioRequest;
+import com.mjvdesafiofinal.ecommerce.service.UsuarioService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

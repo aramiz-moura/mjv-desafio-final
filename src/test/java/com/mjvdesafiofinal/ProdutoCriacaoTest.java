@@ -1,8 +1,13 @@
 package com.mjvdesafiofinal;
 
 
-import com.mjvdesafiofinal.produto.*;
-import com.mjvdesafiofinal.usuario.UsuarioRequest;
+import com.mjvdesafiofinal.ecommerce.model.produto.ProdutoEntity;
+import com.mjvdesafiofinal.ecommerce.model.produto.ProdutoRequest;
+import com.mjvdesafiofinal.ecommerce.model.produto.TipoMidia;
+import com.mjvdesafiofinal.model.produto.*;
+
+import com.mjvdesafiofinal.ecommerce.repository.ProdutoRepository;
+import com.mjvdesafiofinal.ecommerce.service.ProdutoService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
