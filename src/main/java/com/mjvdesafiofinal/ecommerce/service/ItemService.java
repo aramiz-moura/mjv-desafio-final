@@ -18,13 +18,10 @@ import org.springframework.stereotype.Service;
 @Data
 public class ItemService {
 
-    @Autowired
+
     ItemCarrinhoRepository itemCarrinhoRepository;
-    @Autowired
     CarrinhoRepository carrinhoRepository;
-    @Autowired
     ProdutoService produtoService;
-    @Autowired
     CarrinhoService carrinhoService;
 
     public ItemService(ItemCarrinhoRepository itemCarrinhoRepository, CarrinhoRepository carrinhoRepository, ProdutoService produtoService, CarrinhoService carrinhoService) {
