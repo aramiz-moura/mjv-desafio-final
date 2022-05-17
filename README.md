@@ -44,13 +44,13 @@ git clone https://github.com/aramiz-moura/mjv-desafio-final
    Body:
    ```	
    ```json
-   {
+   	{
 	"nome": "string",
 	"descricao": "string",
 	"tipoMidia": "DIGITAL ou FISICO (enum)",
 	"plataforma": "string",
 	"valor": "BigDecimal"
-  }
+  	}
    ```
   > Obs.: O tipo de midia foi escolhido um ENUM para representa-lo, então ele espera os valores (**DIGITAL**, **FISICO**). Caso informe um tipo diferente desses gerará um erro inesperado.
   
@@ -73,13 +73,13 @@ git clone https://github.com/aramiz-moura/mjv-desafio-final
    Body:
    ```	
    ```json
-   {
+   	{
 	"nome": "string,
 	"descricao": "string",
 	"tipoMidia": "DIGITAL ou FISICO (enum)",
 	"plataforma": "string",
 	"valor": 180.50 (BigDecimal)
-  }
+  	}
    ```
   > Obs.: Atualiza produto já cadastrado.
    
@@ -95,12 +95,12 @@ git clone https://github.com/aramiz-moura/mjv-desafio-final
     Body:
     ```
    ```json
- {
+ 	{
 	"nomeUsuario": "string",
 	"nome": "string",
 	"email": "string",
 	"cpf": "string"	
-}
+	}
    ```
 2. Caminho=*/{idUsuario}*, Método=**GET**
    
@@ -121,12 +121,12 @@ git clone https://github.com/aramiz-moura/mjv-desafio-final
    Body:
    ```	
    ```json
-   {
+   	{
 	"nome": "string,
 	"nomeUsuario": "string",
 	"email": "string",
 	"cpf": "string"
-  }
+  	}
    ```
   > Obs.: Atualiza usuário já cadastrado.
 		
@@ -142,10 +142,10 @@ git clone https://github.com/aramiz-moura/mjv-desafio-final
    Body:
    ```	
    ```json
-  {
+  	{
 	"produtoId": Long,
 	"quantidade": Integer
-  }
+  	}
    ```
   > Obs.: Adiciona produtos ao carrinho informado. Retorna um JSON com as informações e o produto adicionado ao Carrinho.
   
