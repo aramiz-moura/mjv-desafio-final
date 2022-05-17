@@ -161,10 +161,6 @@ git clone https://github.com/aramiz-moura/mjv-desafio-final
    ```
 </details>
 
-<details><summary><b>Rotas dos fabricantes (Clique aqui)</b></summary>
-
-
-
 ## Detalhes
 
 
