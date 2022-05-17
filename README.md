@@ -45,7 +45,7 @@ git clone https://github.com/aramiz-moura/mjv-desafio-final
    ```	
    ```json
    {
-	"nome": "string,
+	"nome": "string",
 	"descricao": "string",
 	"tipoMidia": "DIGITAL ou FISICO (enum)",
 	"plataforma": "string",
@@ -84,6 +84,7 @@ git clone https://github.com/aramiz-moura/mjv-desafio-final
   > Obs.: Atualiza produto já cadastrado.
    
 </details>
+
 
 <details><summary><b>Rotas dos usuários (Clique aqui)</b></summary>
 
@@ -128,6 +129,7 @@ git clone https://github.com/aramiz-moura/mjv-desafio-final
   }
    ```
   > Obs.: Atualiza usuário já cadastrado.
+		
 </details>
 
 
@@ -159,6 +161,7 @@ git clone https://github.com/aramiz-moura/mjv-desafio-final
    Deleta o item de carrinho especifico de um determinado carrinho.
    Retorna um JSON do que foi deletado.
    ```
+	
 </details>
 
 ## Detalhes
