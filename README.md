@@ -49,7 +49,7 @@ git clone https://github.com/aramiz-moura/mjv-desafio-final
 	"descricao": "string",
 	"tipoMidia": "DIGITAL ou FISICO (enum)",
 	"plataforma": "string",
-	"valor": 180.50 (BigDecimal)
+	"valor": "BigDecimal"
   }
    ```
   > Obs.: O tipo de midia foi escolhido um ENUM para representa-lo, então ele espera os valores (**DIGITAL**, **FISICO**). Caso informe um tipo diferente desses gerará um erro inesperado.
