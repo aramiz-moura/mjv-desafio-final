@@ -144,8 +144,8 @@ git clone https://github.com/aramiz-moura/mjv-desafio-final
    ```	
    ```json
   	{
-	"produtoId": Long,
-	"quantidade": Integer
+	"produtoId": "Long",
+	"quantidade": "Integer"
   	}
    ```
   > Obs.: Adiciona produtos ao carrinho informado. Retorna um JSON com as informações e o produto adicionado ao Carrinho.
@@ -175,7 +175,7 @@ git clone https://github.com/aramiz-moura/mjv-desafio-final
 
 3. Na documentação foi pensado no swagger por ser uma ferramenta de facil implementação e usabilidade.
 
-4. Nas responstas foi escolhido o objeto ResponseEntity do spring para gerenciar todo o objeto da resposta.
+4. Nas respostas foi escolhido o objeto ResponseEntity do spring para gerenciar todo o objeto da resposta.
 
 5. Para testes foi usado o INSOMNIA com os endpoints informados acima.
 
