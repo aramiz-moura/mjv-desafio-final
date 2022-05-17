@@ -44,13 +44,13 @@ git clone https://github.com/aramiz-moura/mjv-desafio-final
    Body:
    ```	
    ```json
-   	{
+   {
 	"nome": "string",
 	"descricao": "string",
 	"tipoMidia": "DIGITAL ou FISICO (enum)",
 	"plataforma": "string",
 	"valor": "BigDecimal"
-  	}
+   }
    ```
 	> Obs.: O tipo de midia foi escolhido um ENUM para representa-lo, então ele espera os valores (**DIGITAL**, **FISICO**). Caso informe um tipo diferente desses gerará um erro inesperado.
   
@@ -73,13 +73,13 @@ git clone https://github.com/aramiz-moura/mjv-desafio-final
    Body:
    ```	
    ```json
-   	{
+   {
 	"nome": "string",
 	"descricao": "string",
 	"tipoMidia": "DIGITAL ou FISICO (enum)",
 	"plataforma": "string",
 	"valor": "BigDecimal"
-  	}
+   }
    ```
 	
   > Obs.: Atualiza produto já cadastrado.
@@ -124,7 +124,7 @@ git clone https://github.com/aramiz-moura/mjv-desafio-final
    ```	
    ```json
    	{
-	"nome": "string,
+	"nome": "string",
 	"nomeUsuario": "string",
 	"email": "string",
 	"cpf": "string"
