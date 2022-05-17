@@ -52,13 +52,13 @@ git clone https://github.com/aramiz-moura/mjv-desafio-final
 	"valor": "BigDecimal"
   	}
    ```
-  > Obs.: O tipo de midia foi escolhido um ENUM para representa-lo, então ele espera os valores (**DIGITAL**, **FISICO**). Caso informe um tipo diferente desses gerará um erro inesperado.
+	> Obs.: O tipo de midia foi escolhido um ENUM para representa-lo, então ele espera os valores (**DIGITAL**, **FISICO**). Caso informe um tipo diferente desses gerará um erro inesperado.
   
 2. Caminho=*/v1/produto?nome={nomedoProduto}&tipoMidia={tipoMidia}&valor={BigDecimal}*, Método=**GET**
-   ```
-	Não é necessário nenhum Body. Porém, possui filtros para nome do produto, tipo de midia e valor.
+```
+  Não é necessário nenhum Body. Porém, possui filtros para nome do produto, tipo de midia e valor.
   Caso não passe nenhum filtro, retornará todos os produtos.
-	```
+```
 3. caminho=*/{idProduto}*, Método=**GET**
    ```
    Consulta um produto através do seu Id. 
@@ -74,13 +74,14 @@ git clone https://github.com/aramiz-moura/mjv-desafio-final
    ```	
    ```json
    	{
-	"nome": "string,
+	"nome": "string",
 	"descricao": "string",
 	"tipoMidia": "DIGITAL ou FISICO (enum)",
 	"plataforma": "string",
-	"valor": 180.50 (BigDecimal)
+	"valor": "BigDecimal"
   	}
    ```
+	
   > Obs.: Atualiza produto já cadastrado.
    
 </details>
@@ -151,10 +152,10 @@ git clone https://github.com/aramiz-moura/mjv-desafio-final
   
 2. Caminho=*/{idCarrinho}*, Método=**GET**
    ```
-    NENHUM BODY NECESSÁRIO.
+   NENHUM BODY NECESSÁRIO.
    Consulta um carrinho através do seu Id. 
    Retorna um JSON com as informações do carrinho.
-    ```
+   ```
 3. Caminho=*/{idCarrinho}/{idItemCarrinho}*, Método=**DELETE**
    ```
    NENHUM BODY NECESSÁRIO.
